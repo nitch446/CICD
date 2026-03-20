@@ -1,0 +1,40 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - main
+
+pool:
+  name: 'Nitin'
+
+steps:
+- task: UiPathInstallPlatform@6
+  displayName: 'Step 1: Install UiPath Tooling'
+
+- task: UiPathPack@6
+  displayName: 'Step 2: Pack Project'
+  inputs:
+    projectJsonPath: '$(Build.SourcesDirectory)'
+    versionType: 'AutoVersion'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+    outputType: 'Tests'
+    orchestratorConnection: 'UiPath_Cloud_Connection'
+
+- task: UiPathDeploy@6
+  displayName: 'Step 3: Deploy to Orchestrator'
+  inputs:
+    orchestratorConnection: 'UiPath_Cloud_Connection'
+    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+    folderName: 'Testing' # Fixed typo from 'Testinig'
+    entryPoints: 'TC01.xaml'
+
+- task: UiPathTest@6
+  displayName: 'Step 4: Run Tests in Project'
+  inputs:
+    testTarget: 'TestProject' # Since you don't have a pre-existing Test Set
+    orchestratorConnection: 'UiPath_Cloud_Connection'
+    testProjectPath: '$(Build.SourcesDirectory)'
+    folderName: 'Testing'
+    testReportDestination: '$(Build.ArtifactStagingDirectory)\test-results.xml'
