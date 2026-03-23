@@ -8,7 +8,8 @@ trigger:
 
 pool:
   name: 'Nitin'
-  agent: 'AgentNitin'
+  demands:
+    - Agent.Name -equals AgentNitin
 
 steps:
 - task: UiPathInstallPlatform@6
