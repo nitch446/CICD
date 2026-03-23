@@ -11,9 +11,6 @@ pool:
   demands:
     - Agent.Name -equals AgentNitin
 
-steps:
-- task: UiPathInstallPlatform@6
-  displayName: 'Step 1: Install UiPath Tooling'
 
 - task: UiPathTest@6
   inputs:
