@@ -4,15 +4,15 @@
 # https://aka.ms/yaml
 
 trigger:
-  - main
+- main
 
 pool:
   name: 'Nitin'
   demands:
-    - Agent.Name -equals AgentNitin
+  - Agent.Name -equals AgentNitin
 
-
-- task: UiPathTest@6
+steps:                   # <--- You are missing this line!
+- task: UiPathTest@6     # <--- Ensure this is indented under steps
   inputs:
     testTarget: 'TestSet'
     orchestratorConnection: 'UiPath_Cloud_Connection'
