@@ -3,6 +3,14 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+trigger:
+  - main
+ 
+pool:
+  name: 'Nitin'
+  agent: 'AgentNitin'
+
+steps:
 - task: UiPathTest@6
   inputs:
     testTarget: 'TestSet'
