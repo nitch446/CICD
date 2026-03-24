@@ -21,6 +21,7 @@ steps:
     testProjectPath: 'project.json'
     folderName: 'Testing'
     testReportDestination: 'result.json'
+    traceLevel: 'Verbose'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
