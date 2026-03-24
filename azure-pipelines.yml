@@ -17,5 +17,5 @@ steps:                   # <--- You are missing this line!
     testTarget: 'TestSet'
     orchestratorConnection: 'UiPath_Cloud_Connection'
     projectKey: 'ETT'
-    testSet: 'uipath.CICD'
+    testSet: 'CICD'
     folderName: 'Testing'
