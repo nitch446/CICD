@@ -10,7 +10,13 @@ pool:
   name: 'Nitin'
   agent: 'AgentNitin'
 
+
 steps:
+- task: UiPathPack@6
+  inputs:
+    projectJsonPath: 'https://github.com/nitch446/CICD/blob/main/project.json'
+    versionType: 'AutoVersion'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 - task: UiPathTest@6
   inputs:
     testTarget: 'TestSet'
