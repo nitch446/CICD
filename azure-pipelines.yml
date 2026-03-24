@@ -19,6 +19,7 @@ steps:
     testTarget: 'TestProject'
     orchestratorConnection: 'UiPath_Cloud_Connection'
     testProjectPath: 'project.json'
+    folderName: 'Testing'
     testReportDestination: 'result.json'
 
 - script: |
